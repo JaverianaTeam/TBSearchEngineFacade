@@ -15,6 +15,7 @@ message Flight {
   string arriving_city = 4;
   int32 passanger = 5;
   double price = 6;
+  string provider = 7;
 }
 
 message SearchFlightRequest {

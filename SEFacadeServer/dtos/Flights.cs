@@ -25,22 +25,22 @@ namespace Flights {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "Cg1mbGlnaHRzLnByb3RvEgdmbGlnaHRzIjAKBERhdGUSCwoDZGF5GAEgASgF",
-            "Eg0KBW1vbnRoGAIgASgFEgwKBHllYXIYAyABKAUipgEKBkZsaWdodBIlCg5k",
+            "Eg0KBW1vbnRoGAIgASgFEgwKBHllYXIYAyABKAUiuAEKBkZsaWdodBIlCg5k",
             "ZXBhcnRpbmdfZGF0ZRgBIAEoCzINLmZsaWdodHMuRGF0ZRIkCg1hcnJpdmlu",
             "Z19kYXRlGAIgASgLMg0uZmxpZ2h0cy5EYXRlEhYKDmRlcGFydGluZ19jaXR5",
             "GAMgASgJEhUKDWFycml2aW5nX2NpdHkYBCABKAkSEQoJcGFzc2FuZ2VyGAUg",
-            "ASgFEg0KBXByaWNlGAYgASgBImsKE1NlYXJjaEZsaWdodFJlcXVlc3QSFgoO",
-            "ZGVwYXJ0aW5nX2NpdHkYASABKAkSFQoNYXJyaXZpbmdfY2l0eRgCIAEoCRIl",
-            "Cg5kZXBhcnRpbmdfZGF0ZRgDIAEoCzINLmZsaWdodHMuRGF0ZSI4ChRTZWFy",
-            "Y2hGbGlnaHRSZXNwb25zZRIgCgdmbGlnaHRzGAEgAygLMg8uZmxpZ2h0cy5G",
-            "bGlnaHQyZgoTU2VhcmNoRmxpZ2h0U2VydmljZRJPCgxTZWFyY2hGbGlnaHQS",
-            "HC5mbGlnaHRzLlNlYXJjaEZsaWdodFJlcXVlc3QaHS5mbGlnaHRzLlNlYXJj",
-            "aEZsaWdodFJlc3BvbnNlIgAwAWIGcHJvdG8z"));
+            "ASgFEg0KBXByaWNlGAYgASgBEhAKCHByb3ZpZGVyGAcgASgJImsKE1NlYXJj",
+            "aEZsaWdodFJlcXVlc3QSFgoOZGVwYXJ0aW5nX2NpdHkYASABKAkSFQoNYXJy",
+            "aXZpbmdfY2l0eRgCIAEoCRIlCg5kZXBhcnRpbmdfZGF0ZRgDIAEoCzINLmZs",
+            "aWdodHMuRGF0ZSI4ChRTZWFyY2hGbGlnaHRSZXNwb25zZRIgCgdmbGlnaHRz",
+            "GAEgAygLMg8uZmxpZ2h0cy5GbGlnaHQyZgoTU2VhcmNoRmxpZ2h0U2Vydmlj",
+            "ZRJPCgxTZWFyY2hGbGlnaHQSHC5mbGlnaHRzLlNlYXJjaEZsaWdodFJlcXVl",
+            "c3QaHS5mbGlnaHRzLlNlYXJjaEZsaWdodFJlc3BvbnNlIgAwAWIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::Flights.Date), global::Flights.Date.Parser, new[]{ "Day", "Month", "Year" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Flights.Flight), global::Flights.Flight.Parser, new[]{ "DepartingDate", "ArrivingDate", "DepartingCity", "ArrivingCity", "Passanger", "Price" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Flights.Flight), global::Flights.Flight.Parser, new[]{ "DepartingDate", "ArrivingDate", "DepartingCity", "ArrivingCity", "Passanger", "Price", "Provider" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Flights.SearchFlightRequest), global::Flights.SearchFlightRequest.Parser, new[]{ "DepartingCity", "ArrivingCity", "DepartingDate" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Flights.SearchFlightResponse), global::Flights.SearchFlightResponse.Parser, new[]{ "Flights" }, null, null, null, null)
           }));
@@ -265,6 +265,7 @@ namespace Flights {
       arrivingCity_ = other.arrivingCity_;
       passanger_ = other.passanger_;
       price_ = other.price_;
+      provider_ = other.provider_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -339,6 +340,17 @@ namespace Flights {
       }
     }
 
+    /// <summary>Field number for the "provider" field.</summary>
+    public const int ProviderFieldNumber = 7;
+    private string provider_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Provider {
+      get { return provider_; }
+      set {
+        provider_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
       return Equals(other as Flight);
@@ -358,6 +370,7 @@ namespace Flights {
       if (ArrivingCity != other.ArrivingCity) return false;
       if (Passanger != other.Passanger) return false;
       if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(Price, other.Price)) return false;
+      if (Provider != other.Provider) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -370,6 +383,7 @@ namespace Flights {
       if (ArrivingCity.Length != 0) hash ^= ArrivingCity.GetHashCode();
       if (Passanger != 0) hash ^= Passanger.GetHashCode();
       if (Price != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(Price);
+      if (Provider.Length != 0) hash ^= Provider.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -407,6 +421,10 @@ namespace Flights {
         output.WriteRawTag(49);
         output.WriteDouble(Price);
       }
+      if (Provider.Length != 0) {
+        output.WriteRawTag(58);
+        output.WriteString(Provider);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -432,6 +450,9 @@ namespace Flights {
       }
       if (Price != 0D) {
         size += 1 + 8;
+      }
+      if (Provider.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Provider);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -467,6 +488,9 @@ namespace Flights {
       }
       if (other.Price != 0D) {
         Price = other.Price;
+      }
+      if (other.Provider.Length != 0) {
+        Provider = other.Provider;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -507,6 +531,10 @@ namespace Flights {
           }
           case 49: {
             Price = input.ReadDouble();
+            break;
+          }
+          case 58: {
+            Provider = input.ReadString();
             break;
           }
         }
