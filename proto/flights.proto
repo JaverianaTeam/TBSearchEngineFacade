@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+package flights;
+
+message Date {
+  int32 day = 1;
+  int32 month = 2;
+  int32 year = 3;
+}
+
+message Flight {
+  Date departing_date = 1;
+  Date arriving_date = 2;
+  string departing_city = 3;
+  string arriving_city = 4;
+  int32 passanger = 5;
+  double price = 6;
+}
+
+message SearchFlightRequest {
+  string departing_city = 1;
+  string arriving_city = 2;
+  Date departing_date = 3;
+}
+
+message SearchFlightResponse {
+  repeated Flight flights = 1;
+}
+
+service SearchFlightService {
+  rpc SearchFlight(SearchFlightRequest) returns (stream SearchFlightResponse) {};
+}

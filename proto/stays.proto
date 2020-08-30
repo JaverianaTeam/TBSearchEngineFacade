@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+package stays;
+
+message Date {
+  int32 day = 1;
+  int32 month = 2;
+  int32 year = 3;
+}
+
+message Hotel {
+  string country = 1;
+  string city = 2;
+  string name = 3;
+  string address = 4;
+}
+
+message Room {
+  Hotel hotel = 1;
+  int32 number = 2;
+  float price = 3;
+  string type = 4;
+}
+
+message SearchStaysRequest {
+  string country = 1;
+  string city = 2;
+  Date checkin = 3;
+  Date checkout = 4;
+  int32 rooms = 5;
+}
+
+message SearchStaysResponse {
+  repeated Room rooms = 1;
+}
+
+service SearchStaysService {
+  rpc SearchStay(SearchStaysRequest) returns (stream SearchStaysResponse) {}; 
+}
